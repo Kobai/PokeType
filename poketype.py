@@ -41,15 +41,21 @@ Y = lb.fit_transform(Y)
 (trainX, testX, trainY, testY) = train_test_split(X,Y,test_size=0.2, random_state=42)
 
 model = Sequential()
+
 model.add(Conv2D(32, (3,3), padding='same', input_shape = (96,96,3), activation='relu'))
 model.add(MaxPooling2D(pool_size=(2,2)))
 model.add(Dropout(0.25))
-model.add(Conv2D(64, (3,3), padding="same", activation='relu'))
+
+model.add(Conv2D(32, (3,3), padding="same", activation='relu'))
+model.add(MaxPooling2D(pool_size=(2,2)))
+
+model.add(Conv2D(32,(3,3), activation='relu'))
+model.add(MaxPooling2D(pool_size=(2,2)))
+
+model.add(Conv2D(32,(3,3), activation='relu'))
 model.add(MaxPooling2D(pool_size=(2,2)))
 model.add(Dropout(0.25))
-model.add(Conv2D(128,(3,3), activation='relu'))
-model.add(MaxPooling2D(pool_size=(2,2)))
-model.add(Dropout(0.25))
+
 model.add(Flatten())
 model.add(Dense(500, activation='relu'))
 model.add(Dropout(0.25))
@@ -57,7 +63,7 @@ model.add(Dense(18, activation='softmax'))
 model.summary()
 
 model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
-model.fit(trainX, trainY, batch_size=128, epochs=50, verbose=1)
+model.fit(trainX, trainY, batch_size=128, epochs=40, verbose=1)
 score = model.evaluate(testX, testY, batch_size=128, verbose=1)
 print("Test score:", score[0])
 print("Test Accuracy", score[1])
