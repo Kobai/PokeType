@@ -16,7 +16,9 @@ import numpy as np
 
 IMG_DIM = (96,96,3)
 
+# get img directory
 files_dir = os.getcwd() + '\\imgs\\'
+
 
 X =[]
 for i in range(649):
