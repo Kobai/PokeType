@@ -69,3 +69,5 @@ model.fit(trainX, trainY, batch_size=128, epochs=40, verbose=1)
 score = model.evaluate(testX, testY, batch_size=128, verbose=1)
 print("Test score:", score[0])
 print("Test Accuracy", score[1])
+
+model.save("trained_model.h5")
