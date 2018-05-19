@@ -22,11 +22,6 @@ Y = lb.fit_transform(Y)
 model = Sequential()
 model.add(Dense(32, input_dim=6, activation='relu'))
 model.add(Dense(64, activation='relu'))
-model.add(Dense(64, activation='relu'))
-model.add(Dense(64, activation='relu'))
-model.add(Dense(64, activation='relu'))
-model.add(Dense(64, activation='relu'))
-model.add(Dense(64, activation='relu'))
 model.add(Dense(18, activation='linear'))
 model.summary()
 
@@ -35,7 +30,7 @@ model.compile(loss='mse', optimizer='adam', metrics=['accuracy'])
 
 model.fit(
    trainX,trainY,
-    epochs=300,
+    epochs=50,
     verbose = 2
 )
 
@@ -43,7 +38,3 @@ model.fit(
 score = model.evaluate(testX, testY, batch_size=128, verbose=1)
 print("Test score:", score[0])
 print("Accuracy: ", score[1])
-
-model_json = model.to_json()
-with open("model.json", "w") as json_file:
-    json_file.write(model_json)
