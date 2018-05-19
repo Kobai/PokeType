@@ -1,6 +1,6 @@
 import pandas as pd
 from keras.models import Sequential
-from keras.layers import *
+from keras.layers import Dense
 from sklearn.preprocessing import LabelBinarizer
 from sklearn.model_selection import train_test_split
 
@@ -34,7 +34,7 @@ model.summary()
 model.compile(loss='mse', optimizer='adam', metrics=['accuracy'])
 
 model.fit(
-    X,Y,
+   trainX,trainY,
     epochs=300,
     verbose = 2
 )
@@ -43,3 +43,7 @@ model.fit(
 score = model.evaluate(testX, testY, batch_size=128, verbose=1)
 print("Test score:", score[0])
 print("Accuracy: ", score[1])
+
+model_json = model.to_json()
+with open("model.json", "w") as json_file:
+    json_file.write(model_json)
