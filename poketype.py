@@ -17,7 +17,8 @@ from sklearn.model_selection import train_test_split
 IMG_DIM = (96,96,3)
 
 # Get img directory
-files_dir = os.getcwd() + '\\imgs\\'
+files_dir = os.getcwd() + '/imgs/'
+print(files_dir);
 
 #  Read all of the images and preprocess them
 X =[]
@@ -31,7 +32,7 @@ for i in range(649):
 X = np.array(X, dtype="float")/255.0
 
 # Get the primary type of each pokemon from the csv file. Will even tually add secondary type too
-df = pd.read_csv("pokemon.csv")
+df = pd.read_csv("pokemon_stat.csv")
 Y = df[['type_1']].values
 Y = Y[:649]
 lb = LabelBinarizer()
