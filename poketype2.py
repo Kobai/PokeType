@@ -37,3 +37,29 @@ history = model.fit_generator(
   epochs=8,
   verbose=1
 )
+
+
+#%%
+from tensorflow.keras.models import load_model
+
+model = load_model("model2.h5")
+model.summary()
+
+#%%
+def test(link):
+  types = ['bug', 'dark', 'dragon', 'electric', 'fairy', 'fighting', 'fire', 'flying', 'ghost', 'grass', 'ground', 'ice', 'normal', 'poison', 'psychic', 'rock', 'steel', 'water']
+
+  urllib.request.urlretrieve(link, './predict/imgs/test.png')
+  test_datagen = ImageDataGenerator(rescale=1/255)
+  test_gen = test_datagen.flow_from_directory(
+    './predict',
+    target_size=(475, 475),
+    class_mode='categorical'
+  )
+
+  predict = model.predict_generator(test_gen)
+  predict = predict.tolist()[0]
+  lst = [(t,p) for t,p in zip(types,predict)]
+  slst = sorted(lst, key=lambda x: x[1], reverse=True)
+  return slst
+
