@@ -18,7 +18,7 @@ IMG_DIM = (96,96,3)
 
 # Get img directory
 files_dir = os.getcwd() + '/imgs/'
-print(files_dir);
+print(files_dir)
 
 #  Read all of the images and preprocess them
 X =[]
