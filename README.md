@@ -6,15 +6,16 @@ StatAnalysis: An MLP network that predicts a pokemon's primary type based on its
 
 Wip: Version 2
 
-To run it on linux/mac
+To run it on linux/mac (make sure virtualenv is installed)
 ```
 $ chmod a+x run.sh
 $ ./run.sh
 ```
 Otherwise
 ```
-$ pip3 install -r requirements.txt
-$ python3 image_downloader.py
-$ python3 preprocess.py
-$ python3 poketype2.py
+$ virtualenv venv
+$ pip install -r requirements.txt
+$ python image_downloader.py
+$ python preprocess.py
+$ python poketype2.py
 ```

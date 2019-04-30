@@ -1,5 +1,7 @@
 #!/bin/bash
-pip3 install -r requirements.txt
-python3 image_downloader.py
-python3 preprocess.py
-python3 poketype2.py
+virtualenv venv
+source venv/bin/activate
+pip install -r requirements.txt
+python image_downloader.py
+python preprocess.py
+python poketype2.py
