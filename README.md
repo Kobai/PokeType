@@ -13,7 +13,7 @@ $ ./run.sh
 ```
 Otherwise
 ```
-$ virtualenv venv
+$ virtualenv -p python3 venv
 $ pip install -r requirements.txt
 $ python image_downloader.py
 $ python preprocess.py
